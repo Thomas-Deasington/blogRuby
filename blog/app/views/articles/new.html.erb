@@ -1,0 +1,23 @@
+<h1>Nouvel article</h1>
+
+<%= form_with scope: :article, url: articles_path, local: true do |form| %>  
+  <p>
+    <%= form.label :title, "Titre" %><br>
+    <%= form.text_field :title %>
+  </p>
+  <p>
+    <%= form.label :author, "Auteur" %><br>
+    <%= form.text_field :author %>
+  </p>
+  <p>
+    <%= form.label :text, "Chapeau" %><br>
+    <%= form.text_area :text %>
+  </p>
+  <p>
+    <%= form.label :published_date, "Date de publication" %>
+    <%= form.date_field :published_date %>
+  </p>
+  <p>
+    <%= form.submit "Publier" %>
+  </p>
+<% end %>
