@@ -5,8 +5,8 @@
   <% if @article.errors.any? %>
     <div id="error_explanation">
       <ul>
-        <% @article.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
+        <% @article.errors.messages.each do |msg| %>
+          <li><%= msg[1][0] %></li>
         <% end %>
       </ul>
     </div>
