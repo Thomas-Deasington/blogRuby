@@ -1,0 +1,23 @@
+<h1>Les publications des internautes</h2>
+<div style="text-align:center;">
+    <%= link_to 'Nouvel article', new_article_url%>
+</div>
+<br>
+<% @articles.each do |article| %>
+    <div>
+        <p>
+            <strong>Titre:</strong>
+            <%= link_to article.title, article %>
+
+        </p>
+        <p>
+            <strong>Auteur:</strong>
+            <%= article.author %>
+        </p>
+        <p>
+            <strong>Date de publication:</strong>
+            <%= article.published_date %>
+        </p>
+    </div>
+    <hr>
+<% end %>
