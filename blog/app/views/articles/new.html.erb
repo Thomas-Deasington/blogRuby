@@ -6,7 +6,7 @@
     <div id="error_explanation">
       <ul>
         <% @article.errors.messages.each do |msg| %>
-          <li><%= msg[1][0] %></li>
+          <li style="color:red;"><%= msg[1][0] %></li>
         <% end %>
       </ul>
     </div>
