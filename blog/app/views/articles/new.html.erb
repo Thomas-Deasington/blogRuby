@@ -22,7 +22,11 @@
     <%= form.text_field :author %>
   </p>
   <p>
-    <%= form.label :text, "Chapeau" %><br>
+    <%= form.label :image %>
+    <%= form.file_field :image %>
+  </p>
+  <p>
+    <%= form.label :text, "Contenu" %><br>
     <%= form.text_area :text %>
   </p>
   <p>
