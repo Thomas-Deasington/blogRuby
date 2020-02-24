@@ -1,48 +1,42 @@
 <h1>La publication </h1>
-
-
 <div>
-    <% if @article.image.thumb.url %>
-        <p>
-            <%= image_tag @article.image.thumb.url %>
-        </p>
-    <% end %>
-    
+  <% if @article.image.thumb.url %>
     <p>
-        <strong>Titre:</strong>
-        <%= @article.title %>
+      <%= image_tag @article.image.thumb.url %>
     </p>
-    <p>
-        <strong>Auteur:</strong>
-        <%= @article.author %>
-    </p>
-    <p>
-        <strong>Chapeau:</strong>
-        <%= @article.text %>
-    </p>
-    <p>
-        <strong>Date de publication:</strong>
-        <%= @article.published_date %>
-    </p>
+  <% end %>
+  <p>
+    <strong>Titre:</strong>
+    <%= @article.title %>
+  </p>
+  <p>
+    <strong>Auteur:</strong>
+    <%= @article.author %>
+  </p>
+  <p>
+    <strong>Chapeau:</strong>
+    <%= @article.text %>
+  </p>
+  <p>
+    <strong>Date de publication:</strong>
+    <%= @article.published_date %>
+  </p>
 </div>
-
 <h2>Commentaires</h2>
-    <% @article.comments.each do |comment| %>
-        <div>
-            <p>
-                <strong>Titre:</strong>
-                <%= comment.commentaire %>
-            </p>
-            
-            <p>
-                <strong>Contenu:</strong>
-                <%= comment.body %>
-            </p>
-        </div>
-         <%= link_to 'Supprimer', [comment.article, comment],method: :delete, data: { confirm: 'Are you sure?' } %>
-        <hr>
-    <% end %>
-
+<% @article.comments.each do |comment| %>
+  <div>
+    <p>
+      <strong>Titre:</strong>
+      <%= comment.commentaire %>
+    </p>
+    <p>
+      <strong>Contenu:</strong>
+      <%= comment.body %>
+    </p>
+  </div>
+  <%= link_to 'Supprimer', [comment.article, comment],method: :delete, data: { confirm: 'Are you sure?' } %>
+  <hr>
+<% end %>
 <h2>Rajouter un commentaire:</h2>
 <%= form_with(model: [ @article, @article.comments.build ], local: true) do |form| %>
   <p>
@@ -57,6 +51,4 @@
     <%= form.submit "Envoyer le commentaire"%>
   </p>
 <% end %>
-
 <%= link_to 'Retour', articles_path %>
-

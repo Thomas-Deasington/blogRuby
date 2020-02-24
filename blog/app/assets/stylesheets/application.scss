@@ -13,3 +13,25 @@
  *= require_tree .
  *= require_self
  */
+ @import "bootstrap";
+
+ html {
+  height: 100%;
+}
+
+ body {
+   height: 100%;
+    background-image: url("https://eliagraffiti.files.wordpress.com/2017/03/plan-de-travail-4.png");
+  }
+
+  .article-container {
+    margin: 50px;
+    background-color: white ;
+    padding: 20px;
+    border-radius: 10px;
+  }
+
+  .main-title {
+    color: yellow;
+    margin: 20px;
+  }

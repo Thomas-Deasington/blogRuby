@@ -1,36 +1,29 @@
-<h1>Les publications des internautes</h2>
-<div style="text-align:center;">
-    <%= link_to 'Nouvel article', new_article_url%>
+<div class="container-fluid">
+  <h1 class="text-center main-title">Les publications des internautes</h1>
+  <div style="text-align:center;">
+    <%= link_to 'Nouvel article', new_article_url, :class => "btn btn-danger"%>
+  </div>
+  <br>
+  <div class="container">
+    <% @articles.each do |article| %>
+      <div class="row article-container">
+        <div class="">
+          <% if article.image.thumb.url %>
+            <%= image_tag article.image.thumb.url %>
+          <% end %>
+        </div>
+        <div class="col-8">
+          <h5><%= link_to article.title, article %></h5>
+          <br>
+          <p class="card-text"><strong>Auteur:</strong>
+            <%= article.author %></p>
+          <p class="card-text"><strong>Date de publication:</strong>
+            <%= article.published_date %></p>
+          <%= link_to 'Modifier', edit_article_path(article), :class => "btn btn-primary" %>
+          <%# <img class="card-img-top" src="..." alt="Card image cap"> %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <br>
 </div>
-<br>
-<% @articles.each do |article| %>
-    <table style="width:50%; border: 1px solid black; margin-left:auto; margin-right:auto;">
-        <th>
-            <% if article.image.thumb.url %>
-                <div>
-                    <%= image_tag article.image.thumb.url %>
-                </div>
-            <% end %>
-        </th>
-        <th style="width:75%;">
-            <div>
-                <p>
-                <strong>Titre:</strong>
-                <%= link_to article.title, article %>
-
-                </p>
-                <p>
-                    <strong>Auteur:</strong>
-                    <%= article.author %>
-                </p>
-                <p>
-                    <strong>Date de publication:</strong>
-                    <%= article.published_date %>
-                </p>
-                <%= link_to 'Modifier', edit_article_path(article) %>
-            </div>   
-    </table>
-    <br>
-    
-    
-<% end %>
