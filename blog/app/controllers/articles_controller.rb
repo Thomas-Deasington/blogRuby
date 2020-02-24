@@ -25,7 +25,7 @@ class ArticlesController < ApplicationController
     end
 
     def update
-        article_params = params.require(:article).permit(:title, :author, :text, :published_date)
+        article_params = params.require(:article).permit(:title, :author, :image, :text, :published_date)
         article = Article.find(params[:id])
         @article = article.update(article_params)
         redirect_to {@articles}
@@ -40,7 +40,7 @@ class ArticlesController < ApplicationController
     private
 
     def article_params
-        params.require(:article).permit(:title, :author, :text, :published_date)
+        params.require(:article).permit(:title, :author, :image, :text, :published_date)
     end
 
 end

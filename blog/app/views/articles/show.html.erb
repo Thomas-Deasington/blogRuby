@@ -3,6 +3,9 @@
 
 <div>
     <p>
+        <%= image_tag @article.image.thumb.url %>
+    </p>
+    <p>
         <strong>Titre:</strong>
         <%= @article.title %>
     </p>
@@ -19,6 +22,38 @@
         <%= @article.published_date %>
     </p>
 </div>
+
+<h2>Commentaires</h2>
+    <% @article.comments.each do |comment| %>
+        <div>
+            <p>
+                <strong>Titre:</strong>
+                <%= comment.commentaire %>
+            </p>
+            
+            <p>
+                <strong>Contenu:</strong>
+                <%= comment.body %>
+            </p>
+        </div>
+         <%= link_to 'Supprimer', [comment.article, comment],method: :delete, data: { confirm: 'Are you sure?' } %>
+        <hr>
+    <% end %>
+
+<h2>Rajouter un commentaire:</h2>
+<%= form_with(model: [ @article, @article.comments.build ], local: true) do |form| %>
+  <p>
+    <%= form.label "Titre du commentaire" %><br>
+    <%= form.text_field :commentaire %>
+  </p>
+  <p>
+    <%= form.label "contenu" %><br>
+    <%= form.text_area :body %>
+  </p>
+  <p>
+    <%= form.submit "Envoyer le commentaire"%>
+  </p>
+<% end %>
 
 <%= link_to 'Retour', articles_path %>
 
