@@ -2,9 +2,12 @@
 
 
 <div>
-    <p>
-        <%= image_tag @article.image.thumb.url %>
-    </p>
+    <% if @article.image.thumb.url %>
+        <p>
+            <%= image_tag @article.image.thumb.url %>
+        </p>
+    <% end %>
+    
     <p>
         <strong>Titre:</strong>
         <%= @article.title %>
