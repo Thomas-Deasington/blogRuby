@@ -1,41 +1,43 @@
-<h1>Nouvel article</h1>
-
-<%= form_with scope: :article, url: articles_path, local: true do |form| %>  
-  
-  <% if @article.errors.any? %>
-    <div id="error_explanation">
-      <ul>
-        <% @article.errors.messages.each do |msg| %>
-          <li style="color:red;"><%= msg[1][0] %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-  
-  <p>
-    <%= form.label :title, "Titre" %><br>
-    <%= form.text_field :title %>
-    <%=  %>
-  </p>
-  <p>
-    <%= form.label :author, "Auteur" %><br>
-    <%= form.text_field :author %>
-  </p>
-  <p>
-    <%= form.label :image %>
-    <%= form.file_field :image %>
-  </p>
-  <p>
-    <%= form.label :text, "Contenu" %><br>
-    <%= form.text_area :text %>
-  </p>
-  <p>
-    <%= form.label :published_date, "Date de publication" %>
-    <%= form.date_field :published_date %>
-  </p>
-  <p>
-    <%= form.submit "Publier" %>
-  </p>
-<% end %>
-
-<%= link_to 'Retour', articles_path %>
+<div class="container">
+  <h1 class="text-center main-title">Nouvel article</h1>
+  <br>
+  <div class="container form-container d-flex justify-content-center">
+    <%= form_with scope: :article, url: articles_path, local: true do |form| %>
+      <% if @article.errors.any? %>
+        <div id="error_explanation">
+          <ul>
+            <% @article.errors.messages.each do |msg| %>
+              <li style="color:red;"><%= msg[1][0] %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <p>
+        <%= form.label :title, "Titre" %><br>
+        <%= form.text_field :title %>
+        <%=  %>
+      </p>
+      <p>
+        <%= form.label :author, "Auteur" %><br>
+        <%= form.text_field :author %>
+      </p>
+      <p>
+        <%= form.label :image %>
+        <%= form.file_field :image %>
+      </p>
+      <p>
+        <%= form.label :text, "Contenu" %><br>
+        <%= form.text_area :text %>
+      </p>
+      <p>
+        <%= form.label :published_date, "Date de publication" %>
+        <%= form.date_field :published_date %>
+      </p>
+      <p>
+        <%= form.submit "Publier" %>
+      </p>
+    <% end %>
+    <%= link_to 'Retour', articles_path %>
+  </div>
+  <br>
+</div>
