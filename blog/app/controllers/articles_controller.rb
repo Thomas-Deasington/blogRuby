@@ -28,7 +28,7 @@ class ArticlesController < ApplicationController
         article_params = params.require(:article).permit(:title, :author, :image, :text, :published_date)
         article = Article.find(params[:id])
         @article = article.update(article_params)
-        redirect_to {@articles}
+        redirect_to articles_path
     end
 
     def destroy

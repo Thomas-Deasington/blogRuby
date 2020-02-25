@@ -5,6 +5,14 @@
   </div>
   <br>
   <div class="container">
+    <div style="background-color: white;">
+      <% if user_signed_in? %>
+        <span><%= current_user.first_name %> <%= current_user.last_name %></span>
+        <%= link_to('Se déconnecter', destroy_user_session_path, method: :delete)%>
+      <% else %>
+        <%= link_to 'Se connecter', new_user_session_url%>
+      <% end %>
+    </div>
     <% @articles.each do |article| %>
       <div class="row article-container">
         <div class="">
