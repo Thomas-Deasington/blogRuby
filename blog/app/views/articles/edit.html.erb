@@ -2,7 +2,7 @@
     <body >
         <h1 >Editer l'article</h1>
 
-        <%= form_with scope: :article, url: articles_path, local: true do |form| %>  
+        <%= form_with(model: @article, local: true) do |form| %>
   
             <% if @article.errors.any? %>
                 <div id="error_explanation">
