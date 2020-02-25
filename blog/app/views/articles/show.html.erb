@@ -2,7 +2,7 @@
 <div>
   <% if @article.image.thumb.url %>
     <p>
-      <%= image_tag @article.image.thumb.url %>
+      <%= image_tag @article.image.url %>
     </p>
   <% end %>
   <p>
@@ -14,7 +14,7 @@
     <%= @article.author %>
   </p>
   <p>
-    <strong>Chapeau:</strong>
+    <strong>Contenu:</strong>
     <%= @article.text %>
   </p>
   <p>
