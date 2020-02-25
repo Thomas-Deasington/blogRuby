@@ -22,6 +22,7 @@
  body {
    height: 100%;
     background-image: url("https://eliagraffiti.files.wordpress.com/2017/03/plan-de-travail-4.png");
+    padding: 50px;
   }
 
   .article-container {
@@ -31,11 +32,12 @@
     border-radius: 10px;
   }
   .form-container {
-    margin: 50px;
+    margin: 0 auto;
     background-color: white ;
     padding: 20px;
     border-radius: 10px;
     max-width: 30rem;
+    
   }
 
   .main-title {

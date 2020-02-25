@@ -1,8 +1,10 @@
-<html style="background-color: black; color: white">
-    <body >
-        <h1 >Editer l'article</h1>
-
-        <%= form_with scope: :article, url: articles_path, local: true do |form| %>  
+<div class="container-fluid">
+     
+    <h1 class="text-center main-title">Editer l'article</h1>
+    <div class="form-container">
+     
+      <br>
+       <%= form_with scope: :article, url: articles_path, local: true do |form| %>  
   
             <% if @article.errors.any? %>
                 <div id="error_explanation">
@@ -35,11 +37,16 @@
                 <%= form.label :published_date, "Date de publication" %>
                 <%= form.date_field :published_date %>
             </p>
-            <p>
-                <%= form.submit "Publier" %>
+            <p class="text-center">
+                <%= form.submit "Publier", :class => "btn btn-primary" %>
+                <%= link_to 'Retour', articles_path, :class => "btn btn-warning" %>
+        <%= link_to "Supprimer", article_path(@article), method: "delete", data:{confirm: "Êtes-vous sûr ?"}, :class => "btn btn-danger" %>
+
+       
             </p>
         <% end %>
-        <%= link_to 'Retour', articles_path %>
-        <%= link_to "Supprimer", article_path(@article), method: "delete", data:{confirm: "Êtes-vous sûr ?"} %>
-    </body>
-</html>
+
+      
+    </div>
+    <br>
+</div>
