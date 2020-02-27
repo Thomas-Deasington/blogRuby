@@ -1,7 +1,9 @@
 <div class="container-fluid">
   <h1 class="text-center main-title">Les publications des internautes</h1>
   <div style="text-align:center;">
-    <%= link_to 'Nouvel article', new_article_url, :class => "btn btn-danger"%>
+    <% if user_signed_in? %>
+      <%= link_to 'Nouvel article', new_article_url, :class => "btn btn-danger"%>
+    <% end %>
   </div>
   <br>
   <div class="container">

@@ -8,15 +8,23 @@ class ArticlesController < ApplicationController
     end
 
     def new
-        @article = Article.new
+        if user_signed_in?
+            @article = Article.new
+        else
+            redirect_to new_user_session_url
+        end
     end
 
     def create
-        @article = Article.new(article_params) 
-        if @article.save
-            redirect_to @article
+        if user_signed_in?
+            @article = Article.new(article_params)  
+            if @article.save
+                redirect_to @article
+            else
+                render 'new'
+            end
         else
-            render 'new'
+            redirect_to new_user_session_url
         end
     end
 
@@ -25,7 +33,6 @@ class ArticlesController < ApplicationController
     end
 
     def update
-        article_params = params.require(:article).permit(:title, :author, :image, :text, :published_date)
         article = Article.find(params[:id])
         @article = article.update(article_params)
         redirect_to articles_path
@@ -38,7 +45,6 @@ class ArticlesController < ApplicationController
     end
 
     private
-
     def article_params
         params.require(:article).permit(:title, :author, :image, :text, :published_date)
     end
