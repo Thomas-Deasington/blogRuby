@@ -2,37 +2,41 @@
   <h1 class="text-center main-title">La publication</h1>
   <div class="article-container">
     <br>
-    <div>
-      <% if @article.image.thumb.url %>
+    <div class="row" style="margin:auto;">
+      <div class="col-6">
+        <% if @article.image.thumb.url %>
+          <p>
+            <%= image_tag @article.image.url %>
+          </p>
+        <% end %>
+      </div>
+      <div class="col-6" style="margin:auto;">
         <p>
-          <%= image_tag @article.image.url %>
+          <strong>Titre:</strong>
+          <%= @article.title %>
         </p>
-      <% end %>
-      <p>
-        <strong>Titre:</strong>
-        <%= @article.title %>
-      </p>
-      <p>
-        <strong>Auteur:</strong>
-        <%= @article.author %>
-      </p>
-      <p>
-        <strong>Contenu:</strong>
-        <%= @article.text %>
-      </p>
-      <p>
-        <strong>Date de publication:</strong>
-        <%= @article.published_date %>
-      </p>
+        <p>
+          <strong>Auteur:</strong>
+          <%= @article.author %>
+        </p>
+        <p>
+          <strong>Contenu:</strong>
+          <%= @article.text %>
+        </p>
+        <p>
+          <strong>Date de publication:</strong>
+          <%= @article.published_date.strftime("%m/%d/%Y") %>
+        </p>
+      </div>
     </div>
     <h4>Commentaires</h4>
     <table class="table">
       <thead>
         <tr>
-          <th scope="col">#</th>
+          <th scope="col">N°</th>
           <th scope="col">Titre</th>
           <th scope="col">Contenu</th>
-          <th scope="col">Supprimer</th>
+          <th scope="col"></th>
         </tr>
       </thead>
       <tbody>
@@ -41,30 +45,33 @@
             <th scope="row"><%= comment.id %></th>
             <td><%= comment.commentaire %></td>
             <td><%= comment.body %></td>
-            <td><%= link_to 'X', [comment.article, comment],method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %></td>
+            <td><%= link_to 'X', [comment.article, comment],method: :delete, data: { confirm: 'Êtes-vous sûr ?' }, :class => "btn btn-danger" %></td>
           </tr>
         <% end %>
       </tbody>
     </table>
     <br>
     <br>
-    <div class="text-center">
-    <h4>Rajouter un commentaire:</h4>
+    <div class="text-center" style="border:1px solid black; width:50%; margin:auto; border-radius:5px;">
+      <h4>Rajouter un commentaire:</h4>
 
-    <%= form_with(model: [ @article, @article.comments.build ], local: true) do |form| %>
-      <p>
-        <%= form.label "Titre du commentaire" %><br>
-        <%= form.text_field :commentaire %>
-      </p>
-      <p>
-        <%= form.label "contenu" %><br>
-        <%= form.text_area :body %>
-      </p>
-      <p class="text-center">
-        <%= form.submit "poster le commentaire", :class => "btn btn-primary"%>
-        <%= link_to 'Retour', articles_path, :class => "btn btn-warning" %>
-      </p>
-    <% end %>
+      <%= form_with(model: [ @article, @article.comments.build ], local: true) do |form| %>
+        <p>
+          <%= form.label "Titre du commentaire" %><br>
+          <%= form.text_field :commentaire %>
+        </p>
+        <p>
+          <%= form.label "contenu" %><br>
+          <%= form.text_area :body %>
+        </p>
+        <p class="text-center">
+          <%= form.submit "poster le commentaire", :class => "btn btn-primary"%>
+        </p>
+      <% end %>
+    </div>
+    <br>
+    <div style="text-align:center;">
+      <%= link_to 'Retour', articles_path, :class => "btn btn-warning" %>
     </div>
   </div>
   <br>

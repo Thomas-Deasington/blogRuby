@@ -36,7 +36,7 @@
           <p class="card-text"><strong>Auteur:</strong>
             <%= article.author %></p>
           <p class="card-text"><strong>Date de publication:</strong>
-            <%= article.published_date %></p>
+            <%= article.published_date.strftime("%m/%d/%Y")  %></p>
           <%= link_to 'Modifier', edit_article_path(article), :class => "btn btn-primary" %>
           <%# <img class="card-img-top" src="..." alt="Card image cap"> %>
         </div>
