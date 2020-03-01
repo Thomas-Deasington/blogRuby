@@ -9,22 +9,22 @@
         <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
       </div>
       <div class="field">
-        <%= f.label :first_name %><br />
+        <%= f.label "Prénom" %><br />
         <%= f.text_field :first_name %>
       </div>
       <div class="field">
-        <%= f.label :last_name %><br />
+        <%= f.label "Nom" %><br />
         <%= f.text_field :last_name %>
       </div>
       <div class="field">
-        <%= f.label :password %>
+        <%= f.label "Mot de passe" %>
         <% if @minimum_password_length %>
-          <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <em>(<%= @minimum_password_length %> caractères minimum)</em>
         <% end %><br />
         <%= f.password_field :password, autocomplete: "new-password" %>
       </div>
       <div class="field">
-        <%= f.label :password_confirmation %><br />
+        <%= f.label "confirmation du mot de passe" %><br />
         <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
       </div>
       <br>

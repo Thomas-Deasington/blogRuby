@@ -8,18 +8,19 @@
         <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
       </div>
       <div class="field">
-        <%= f.label :password %><br />
+        <%= f.label "Mot de passe" %><br />
         <%= f.password_field :password, autocomplete: "current-password" %>
       </div>
       <% if devise_mapping.rememberable? %>
         <div class="field">
           <%= f.check_box :remember_me %>
-          <%= f.label :remember_me %>
+          <%= f.label "Se souvenir de moi" %>
         </div>
       <% end %>
       <div class="actions text-center">
-        <%= f.submit "Se connecter", :class => "btn btn-primary" %>
+        <%= f.submit "Se connecter", :class => "btn btn-primary" %><br>
         <%= render "devise/shared/links" %>
+        <%= link_to 'Retour', articles_path %>
       </div>
     <% end %>
   </div>
